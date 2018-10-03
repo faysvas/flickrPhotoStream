@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
+import { Container } from 'reactstrap';
+import Photos from './Photos';
+import PhotoCard from './PhotoCard';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+    state = {
+    photos: ['test', 'test2']
+  };
+
   render() {
+    const { photos } = this.state;
+        const photoCards = photos.map((photo, idx) => (
+          <PhotoCard props={photo} key={idx}  />
+    ));
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Container>
+        {photoCards}
+      </Container>
     );
   }
 }
